@@ -1,0 +1,23 @@
+---
+title: "Counties"
+format: html
+---
+
+```{r}
+#| message: false
+#| echo: false
+library(tidyverse)
+library(primer.data)
+```
+
+```{r}
+#| echo: false
+connectedness |> 
+  drop_na()|>
+            ggplot(aes(y = connectedness, x = population))  +
+  geom_point() + 
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE) +
+  labs(x = "Population", y = "Economic Connectedness", title = "US County Population versus Economic Connectedness", caption = "Opportunity Insights")+
+  scale_x_log10(label =scales::comma_format())
+```
+
